@@ -81,7 +81,7 @@ class _NotesViewState extends State<NotesView> {
                     Navigator.of(context)
                         .pushNamedAndRemoveUntil(loginRoute, (_) => false);
                   }
-              } 
+              }
             },
             itemBuilder: (context) {
               return const [
