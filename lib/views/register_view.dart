@@ -113,7 +113,7 @@ class _RegisterViewState extends State<RegisterView> {
               return const Text('Loading... ');
           }
         },
-      ),
-    );
-  }
+      ),
+    );
+  }
 }
