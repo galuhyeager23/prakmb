@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "870628664042",
+    "project_id": "prakmb-e7a17",
+    "storage_bucket": "prakmb-e7a17.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870628664042:android:922e43dd0af5002cd6ad93",
+        "android_client_info": {
+          "package_name": "com.example.prakmb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD69lJKAMFzZJpDbe6OhOXVp-2KZfcjfmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
