@@ -4,8 +4,6 @@ import 'package:prakmb/services/auth/firebase_auth_provider.dart';
 
 class AuthService implements AuthProvider {
   final AuthProvider provider;
-
-  static var instance;
   const AuthService(this.provider);
 
   factory AuthService.firebase() => AuthService(FirebaseAuthProvider());
@@ -24,9 +22,6 @@ class AuthService implements AuthProvider {
   AuthUser? get currentUser => provider.currentUser;
 
   @override
-  Future<void> logOut() => provider.logOut();
-
-  @override
   Future<AuthUser> logIn({
     required String email,
     required String password,
@@ -35,6 +30,9 @@ class AuthService implements AuthProvider {
         email: email,
         password: password,
       );
+
+  @override
+  Future<void> logOut() => provider.logOut();
 
   @override
   Future<void> sendEmailVerification() => provider.sendEmailVerification();

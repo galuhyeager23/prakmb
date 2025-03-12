@@ -5,7 +5,7 @@ import 'package:prakmb/services/auth/auth_service.dart';
 import 'package:prakmb/utilities/dialogs/error_dialog.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -17,9 +17,9 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void initState() {
-    super.initState();
     _email = TextEditingController();
     _password = TextEditingController();
+    super.initState();
   }
 
   @override
@@ -41,11 +41,9 @@ class _LoginViewState extends State<LoginView> {
             controller: _email,
             enableSuggestions: false,
             autocorrect: false,
-            keyboardType: 
-            TextInputType.emailAddress,
-            decoration: 
-            const InputDecoration(
-              hintText: 'Enter Your Email Here',
+            keyboardType: TextInputType.emailAddress,
+            decoration: const InputDecoration(
+              hintText: 'Enter your email here',
             ),
           ),
           TextField(
@@ -53,9 +51,8 @@ class _LoginViewState extends State<LoginView> {
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
-            decoration: 
-            const InputDecoration(
-              hintText: 'Enter Your Password Here',
+            decoration: const InputDecoration(
+              hintText: 'Enter your password here',
             ),
           ),
           TextButton(
@@ -69,25 +66,33 @@ class _LoginViewState extends State<LoginView> {
                 );
                 final user = AuthService.firebase().currentUser;
                 if (user?.isEmailVerified ?? false) {
+                  // user's email is verified
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     notesRoute,
                     (route) => false,
                   );
                 } else {
+                  // user's email is NOT verified
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     verifyEmailRoute,
                     (route) => false,
                   );
                 }
-              } on UserNotLoggedInAuthException {
+              } on UserNotFoundAuthException {
                 await showErrorDialog(
-                  context, 'User Not Found');
+                  context,
+                  'User not found',
+                );
               } on WrongPasswordAuthException {
                 await showErrorDialog(
-                  context, 'Wrong Credentials');
+                  context,
+                  'Wrong credentials',
+                );
               } on GenericAuthException {
                 await showErrorDialog(
-                  context, 'Authentication error');
+                  context,
+                  'Authentication error',
+                );
               }
             },
             child: const Text('Login'),

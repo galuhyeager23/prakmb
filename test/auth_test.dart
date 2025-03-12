@@ -1,7 +1,6 @@
 import 'package:prakmb/services/auth/auth_exceptions.dart';
 import 'package:prakmb/services/auth/auth_provider.dart';
 import 'package:prakmb/services/auth/auth_user.dart';
-import 'package:prakmb/views/login_view.dart';
 import 'package:test/test.dart';
 
 void main() {

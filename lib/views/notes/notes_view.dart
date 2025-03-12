@@ -7,7 +7,7 @@ import 'package:prakmb/utilities/dialogs/logout_dialog.dart';
 import 'package:prakmb/views/notes/notes_list_view.dart';
 
 class NotesView extends StatefulWidget {
-  const NotesView({Key? key}) : super(key: key);
+  const NotesView({super.key});
 
   @override
   _NotesViewState createState() => _NotesViewState();

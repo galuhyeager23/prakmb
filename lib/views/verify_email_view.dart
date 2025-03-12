@@ -3,7 +3,7 @@ import 'package:prakmb/constants/routes.dart';
 import 'package:prakmb/services/auth/auth_service.dart';
 
 class VerifyEmailView extends StatefulWidget {
-  const VerifyEmailView({Key? key}) : super(key: key);
+  const VerifyEmailView({super.key});
 
   @override
   _VerifyEmailViewState createState() => _VerifyEmailViewState();

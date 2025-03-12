@@ -4,7 +4,7 @@ import 'package:prakmb/services/crud/notes_service.dart';
 import 'package:prakmb/utilities/generics/get_arguments.dart';
 
 class CreateUpdateNoteView extends StatefulWidget {
-  const CreateUpdateNoteView({Key? key}) : super(key: key);
+  const CreateUpdateNoteView({super.key});
 
   @override
   _CreateUpdateNoteViewState createState() => _CreateUpdateNoteViewState();
