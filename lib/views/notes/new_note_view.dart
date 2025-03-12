@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prakmb/services/auth/auth_service.dart';
 import 'package:prakmb/services/crud/notes_service.dart';
-import 'package:sqflite/sqflite.dart';
 
 class NewNoteView extends StatefulWidget {
   const NewNoteView({Key? key}) : super(key: key);
@@ -79,28 +78,29 @@ class _NewNoteViewState extends State<NewNoteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('New route'),
-        ),
-        body: FutureBuilder(
-          future: createNewNote(),
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.done:
-                _note = snapshot.data as DatabaseNote;
-                _setupTextControllerListener();
-                return TextField(
-                  controller: _textController,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  decoration: const InputDecoration(
-                    hintText: 'Start typing your note...',
-                  ),
-                );
-              default:
-                return const CircularProgressIndicator();
-            }
-          },
-        ));
+      appBar: AppBar(
+        title: const Text('New Note'),
+      ),
+      body: FutureBuilder(
+        future: createNewNote(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.done:
+              _note = snapshot.data as DatabaseNote;
+              _setupTextControllerListener();
+              return TextField(
+                controller: _textController,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                decoration: const InputDecoration(
+                  hintText: 'Start typing your note...',
+                ),
+              );
+            default:
+              return const CircularProgressIndicator();
+          }
+        },
+      ),
+    );
   }
 }
