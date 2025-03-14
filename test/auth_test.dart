@@ -108,6 +108,23 @@ class MockAuthProvider implements AuthProvider {
   }
 
   @override
+  Future<AuthUser> logIn({
+    required String email,
+    required String password,
+  }) {
+    if (!isInitialized) throw NotInitializedException();
+    if (email == 'foo@bar.com') throw UserNotFoundAuthException();
+    if (password == 'foobar') throw WrongPasswordAuthException();
+    const user = AuthUser(
+      id: 'my_id',
+      isEmailVerified: false,
+      email: 'foo@bar.com',
+    );
+    _user = user;
+    return Future.value(user);
+  }
+
+  @override
   Future<void> logOut() async {
     if (!isInitialized) throw NotInitializedException();
     if (_user == null) throw UserNotFoundAuthException();
@@ -116,27 +133,15 @@ class MockAuthProvider implements AuthProvider {
   }
 
   @override
-  Future<AuthUser> logIn({
-    required String email,
-    required String password,
-  }) {
-    if (!isInitialized) throw NotInitializedException();
-    if (email == 'foo@bar.com') throw UserNotFoundAuthException();
-    if (password == 'foobar') throw WrongPasswordAuthException();
-    const user = AuthUser(isEmailVerified: false, email: 'foo@bar.com');
-    _user = user;
-    return Future.value(user);
-  }
-
-  @override
   Future<void> sendEmailVerification() async {
     if (!isInitialized) throw NotInitializedException();
     final user = _user;
     if (user == null) throw UserNotFoundAuthException();
     const newUser = AuthUser(
-      isEmailVerified: true, 
+      id: 'my_id',
+      isEmailVerified: true,
       email: 'foo@bar.com',
-      );
+    );
     _user = newUser;
   }
 }
